@@ -1,6 +1,6 @@
 [package]
 name = "flightcheck"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["Ross MacD <rossmacdonald3411@gmail.com>"]
 edition = "2018"
 
