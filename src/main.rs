@@ -1,15 +1,12 @@
+use ansi_term::Colour::{Green, Red};
+use crossterm::{cursor, QueueableCommand};
 use exitfailure::ExitFailure;
 use failure::ResultExt;
-use text_io::read;
-use structopt::StructOpt;
+use std::io::{self, stdout, Write};
 use std::process::exit;
-use std::io::{self,stdout, Write};
-use ansi_term::Colour::{Green,Red};
-use crossterm::{QueueableCommand, cursor};
 use std::{thread, time};
-
-
-
+use structopt::StructOpt;
+use text_io::read;
 
 #[derive(StructOpt)]
 #[structopt(
@@ -31,24 +28,8 @@ fn main() -> Result<(), ExitFailure> {
             &args.checklist_path
         )
     })?;
-    
-    let mut i = 1;
     let mut stdout = stdout();
     for line in content.lines() {
-        // using the macro
-    // printItem();
-
-    
-
-    // for i in 1..10 {
-    //     stdout.queue(cursor::SavePosition);
-    //     stdout.write(format!("Here!!! {}", i).as_bytes());
-    //     stdout.queue(cursor::RestorePosition);
-    //     stdout.flush();
-    //     thread::sleep(time::Duration::from_millis(500));
-    // }
-
-
         stdout.queue(cursor::SavePosition);
         stdout.write(format!("{} {}\n", Red.bold().paint("[-]"), line).as_bytes());
         stdout.flush();
@@ -58,18 +39,15 @@ fn main() -> Result<(), ExitFailure> {
         stdout.queue(cursor::RestorePosition);
         stdout.write(format!("{} {}\n", Green.paint("[X]"), line).as_bytes());
         stdout.flush();
-        // println!("{}  {}", Green.paint("[X]"),line);
-        i += 1;
     }
     Ok(())
 }
 
 fn check_or_throw() -> Result<bool, ExitFailure> {
-    let input:String = read!("{}\n");
+    let input: String = read!("{}\n");
     // .with_context(|_| format!("FlightCheck: Error reading file",))?
     Ok(input == "y" || input == "Y")
 }
-
 
 // fn printItem() -> Result<(), ExitFailure> {
 //     // using the macro
