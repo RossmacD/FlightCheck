@@ -1,10 +1,9 @@
-use ansi_term::Colour::{Green, Red};
+use ansi_term::Colour::{Green, Red,Blue};
 use crossterm::{cursor, QueueableCommand};
 use exitfailure::ExitFailure;
 use failure::ResultExt;
-use std::io::{self, stdout, Write};
+use std::io::{stdout, Write};
 use std::process::exit;
-use std::{thread, time};
 use structopt::StructOpt;
 use text_io::read;
 
@@ -29,6 +28,9 @@ fn main() -> Result<(), ExitFailure> {
         )
     })?;
     let mut stdout = stdout();
+    stdout.write(format!("\nYour checklist: {}\n\n", Blue.paint("Enter `y` or `Y` to check item off list")).as_bytes());
+    stdout.flush();
+    let mut lineIndex=1;
     for line in content.lines() {
         stdout.queue(cursor::SavePosition);
         stdout.write(format!("{} {}\n", Red.bold().paint("[-]"), line).as_bytes());
@@ -39,6 +41,7 @@ fn main() -> Result<(), ExitFailure> {
         stdout.queue(cursor::RestorePosition);
         stdout.write(format!("{} {}\n", Green.paint("[X]"), line).as_bytes());
         stdout.flush();
+        lineIndex+=1;
     }
     Ok(())
 }
