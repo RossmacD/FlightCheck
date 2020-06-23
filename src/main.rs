@@ -1,6 +1,8 @@
 use exitfailure::ExitFailure;
 use failure::ResultExt;
+use text_io::read;
 use structopt::StructOpt;
+use std::process::exit;
 
 #[derive(StructOpt)]
 #[structopt(
@@ -25,8 +27,18 @@ fn main() -> Result<(), ExitFailure> {
 
     let mut i = 1;
     for line in content.lines() {
-        print!("{}: {}",i,line);
-        i+=1;
+        println!("[-]  {}", line);
+        if !check_or_throw()? {
+            exit(126)
+        }
+        println!("[X]  {}", line);
+        i += 1;
     }
     Ok(())
+}
+
+fn check_or_throw() -> Result<bool, ExitFailure> {
+    let input:String = read!("{}\n");
+    // .with_context(|_| format!("FlightCheck: Error reading file",))?
+    Ok(input == "y" || input == "Y")
 }
