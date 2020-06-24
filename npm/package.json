@@ -1,0 +1,22 @@
+{
+  "name": "flightcheck",
+  "version": "1.0.0",
+  "description": "A simple command line checklist.",
+  "main": "./lib/run.js",
+  "scripts": {
+    "postinstall": "node lib/install.js",
+    "preinstall": "node lib/uninstall.js"
+  },
+  "keywords": [],
+  "author": "Ross MacDonald - http://RossMacD.com",
+  "license": "ISC",
+  "dependencies": {
+    "binary-install": "0.0.1"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "bin": {
+    "flightcheck": "./lib/run.js"
+  }
+}
