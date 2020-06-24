@@ -13,6 +13,7 @@ env:
   global:
     # TOD O Update this to match the name of your project.
     - CRATE_NAME=flightcheck
+    - SECURE=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAxyjMHofIgEZKeIZI2Uzt F1OG3IIZLw7AIFg/HDOWMMkvpXL+7XYgSYpPcnGOTMgBigBL2epD9xcAiJn4bSsi Zpchr47zq7nDfmGVDoJfSsxaMTn3HLnoYu+shwNVQQ4YuB24hr7g14VotP1NfSuE IlU3S55CuhdcxUIvkN9HEYkj2Eu1LBSX477dhBKxUg6pU4gEw5bb4r+vd/pVT62a mpxUQHD0ME+SKVhgg4zBlPSY82dDA9Sdsbzc5l8SaqYev+mi8Efk5Cg+SrPH176s r1LspGsTFOWXjWaWkd30Yc13XnH8JbaZ37b7FQEmI1HFleKvVU38PnE4Dh2f5KNp Ck9mt8m+I1Hj3B36jbslcPHvASWTHFWy2Fkn9xvSPF8NQ+vBvl+IlIt8pBl6k/kM PO5/h4cIanoAz0BTMMHv2rJihbre0ufaBX1IuOb4hEdwzJoqan/wP0l4Rm4aXogh TJ+X6H1gV3FKz7yJr8huRRgOcl+ChyYXt377zL+iK1jJNxHJJMOS8po/Y81t+yro jYKlmxscsA4XSMLRT3JKI7siQKir3XA4JoYU9aRleCPHHFy+FUd7saKiuaYoahnv FYUZHhHFADbpQa6oMlsyeJHsbPqDQnEcZJOVx9yRj/AlXBdqzclwftq9LveR43+N 1AKCm1SEBM8F3XAgE26yVqcCAwEAAQ==
 
 matrix:
   # TO DO These are all the build jobs. Adjust as necessary. Comment out what you
@@ -66,7 +67,7 @@ deploy:
   # - Encrypt it: `travis encrypt 
   # - Paste the output down here
   api_key:
-    secure: MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAxyjMHofIgEZKeIZI2Uzt F1OG3IIZLw7AIFg/HDOWMMkvpXL+7XYgSYpPcnGOTMgBigBL2epD9xcAiJn4bSsi Zpchr47zq7nDfmGVDoJfSsxaMTn3HLnoYu+shwNVQQ4YuB24hr7g14VotP1NfSuE IlU3S55CuhdcxUIvkN9HEYkj2Eu1LBSX477dhBKxUg6pU4gEw5bb4r+vd/pVT62a mpxUQHD0ME+SKVhgg4zBlPSY82dDA9Sdsbzc5l8SaqYev+mi8Efk5Cg+SrPH176s r1LspGsTFOWXjWaWkd30Yc13XnH8JbaZ37b7FQEmI1HFleKvVU38PnE4Dh2f5KNp Ck9mt8m+I1Hj3B36jbslcPHvASWTHFWy2Fkn9xvSPF8NQ+vBvl+IlIt8pBl6k/kM PO5/h4cIanoAz0BTMMHv2rJihbre0ufaBX1IuOb4hEdwzJoqan/wP0l4Rm4aXogh TJ+X6H1gV3FKz7yJr8huRRgOcl+ChyYXt377zL+iK1jJNxHJJMOS8po/Y81t+yro jYKlmxscsA4XSMLRT3JKI7siQKir3XA4JoYU9aRleCPHHFy+FUd7saKiuaYoahnv FYUZHhHFADbpQa6oMlsyeJHsbPqDQnEcZJOVx9yRj/AlXBdqzclwftq9LveR43+N 1AKCm1SEBM8F3XAgE26yVqcCAwEAAQ==
+    secure: $SECURE
   file_glob: true
   file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
   on:

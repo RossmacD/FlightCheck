@@ -7,7 +7,7 @@
     "postinstall": "node lib/install.js",
     "preinstall": "node lib/uninstall.js"
   },
-  "keywords": [],
+  "keywords": ["Checklist","CLI","Devtool"],
   "author": "Ross MacDonald - http://RossMacD.com",
   "license": "ISC",
   "dependencies": {
