@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/RossmacD/FlightCheck.svg?branch=master)](https://travis-ci.com/RossmacD/FlightCheck)
-# FlightCheck
+# FlightCheck ✈✔
 > A simple Command line checklist
 
 Flightcheck is a CLI tool for creating a checklist that must be completed before another command is run.

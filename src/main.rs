@@ -10,8 +10,8 @@ use text_io::read;
 #[derive(StructOpt)]
 #[structopt(
     name = "FlightCheck",
-    version = "1.0",
-    about = "A simple command line checklist.",
+    version = "1.0.0",
+    about = "A simple command line checklist. ✈✔",
     author = "Ross MacDonald - http://RossMacD.com"
 )]
 struct CliArgs {
@@ -51,15 +51,3 @@ fn check_or_throw() -> Result<bool, ExitFailure> {
     // .with_context(|_| format!("FlightCheck: Error reading file",))?
     Ok(input == "y" || input == "Y")
 }
-
-// fn printItem() -> Result<(), ExitFailure> {
-//     // using the macro
-//     execute!(
-//         stdout(),
-//         SetForegroundColor(Color::Blue),
-//         SetBackgroundColor(Color::Red),
-//         Print("Styled text here."),
-//         ResetColor
-//     )?;
-//     Ok(())
-// }
