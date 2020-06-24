@@ -42,7 +42,7 @@ matrix:
       os: osx
 
     # Windows
-    - env: TARGET=x86_64-pc-windows-gnu
+    # - env: TARGET=x86_64-pc-windows-gnu
 
 before_install:
   - set -e

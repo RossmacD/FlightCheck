@@ -17,7 +17,7 @@ function getPlatform() {
 
 function getBinary() {
     const version = require('../package.json').version;
-    const url = `https://https://github.com/RossmacD/FlightCheck/releases/download/v${ version }/FlightCheck-${getPlatform()}.tar.gz`;
+    const url = `https://github.com/RossmacD/FlightCheck/releases/download/v${ version }/FlightCheck-v${ version }-${getPlatform()}.tar.gz`;
     const name = 'flightcheck';
     return new Binary(url, { name });
 }
