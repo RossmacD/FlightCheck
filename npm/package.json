@@ -1,8 +1,7 @@
 {
   "name": "flightcheck",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "A simple command line checklist.",
-  "main": "./lib/run.js",
   "scripts": {
     "postinstall": "node lib/install.js --force"
   },
