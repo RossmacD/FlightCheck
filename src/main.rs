@@ -28,20 +28,20 @@ fn main() -> Result<(), ExitFailure> {
         )
     })?;
     let mut stdout = stdout();
-    stdout.write(format!("\nYour checklist: {}\n\n", Blue.paint("Enter `y` or `Y` to check item off list")).as_bytes());
-    stdout.flush();
-    let mut lineIndex=1;
+    stdout.write(format!("\nYour checklist: {}\n\n", Blue.paint("Enter `y` or `Y` to check item off list")).as_bytes())?;
+    stdout.flush()?;
+    // let mut line_index=1;
     for line in content.lines() {
-        stdout.queue(cursor::SavePosition);
-        stdout.write(format!("{} {}\n", Red.bold().paint("[-]"), line).as_bytes());
-        stdout.flush();
+        stdout.queue(cursor::SavePosition)?;
+        stdout.write(format!("{} {}\n", Red.bold().paint("[-]"), line).as_bytes())?;
+        stdout.flush()?;
         if !check_or_throw()? {
             exit(126)
         }
-        stdout.queue(cursor::RestorePosition);
-        stdout.write(format!("{} {}\n", Green.paint("[X]"), line).as_bytes());
-        stdout.flush();
-        lineIndex+=1;
+        stdout.queue(cursor::RestorePosition)?;
+        stdout.write(format!("{} {}\n", Green.paint("[X]"), line).as_bytes())?;
+        stdout.flush()?;
+        // line_index+=1;
     }
     Ok(())
 }
