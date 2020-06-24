@@ -14,7 +14,7 @@ if (forceInstall) {
     console.log('--force, ignoring caches');
 }
 
-const VERSION = 'v1.0.5';
+const VERSION = 'v1.0.6';
 const BIN_PATH = path.join(__dirname, '../bin');
 
 let exec = require('child_process').exec;
