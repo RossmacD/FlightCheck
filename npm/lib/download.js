@@ -246,7 +246,7 @@ async function unzipBinary(zipPath, destinationDir) {
         await untar(zipPath, destinationDir);
     }
 
-    const expectedName = path.join(destinationDir, 'rg');
+    const expectedName = path.join(destinationDir, `${CRATE_NAME}`);
     if (await fsExists(expectedName)) {
         return expectedName;
     }
@@ -255,7 +255,7 @@ async function unzipBinary(zipPath, destinationDir) {
         return expectedName + '.exe';
     }
 
-    throw new Error(`Expecting rg or rg.exe unzipped into ${destinationDir}, didn't find one.`);
+    throw new Error(`Expecting ${CRATE_NAME} or ${CRATE_NAME}.exe unzipped into ${destinationDir}, didn't find one.`);
 }
 
 module.exports = async opts => {
@@ -286,7 +286,7 @@ module.exports = async opts => {
         throw e;
     }
 
-    console.log(`Unzipping to ${opts.destDir}`);
+    console.log(`Unzipping to ${opts.destDir} from ${assetDownloadPath}`);
     try {
         const destinationPath = await unzipBinary(assetDownloadPath, opts.destDir);
         if (!isWindows) {
