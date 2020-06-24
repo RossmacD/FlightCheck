@@ -46,6 +46,9 @@ Then create a script in your `package.json`
 When the command `npm run pub` is run the command line will prommpt the user to check off each item on the list by entering `y` or `Y`
 If the publisher does not complete the checklist the next command: `npm publish` will not run
 
+## Issues
+If there are any issues with the tool feel free to leave an issue or pull request to the library
+
 ### Development
 Flightcheck is a CLI tool built with rust and distributed using npm.
 To develop flightcheck rust must be installed.
