@@ -17,7 +17,7 @@ args=args.map(arg=>{return arg.charAt(0)!=='-'?process.cwd()+"/"+arg:arg})
 
 // Spawn the binary in a new process and pipe the input / output between the two
 let child = spawn(`${binaryPath}`,args)
-child.stdin.setEncoding('utf8');
+// child.stdin.setEncoding('utf-8');
 child.stdout.pipe(process.stdout);
 child.stderr.pipe(process.stderr);
 process.stdin.pipe(child.stdin);

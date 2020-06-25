@@ -1,11 +1,11 @@
 use ansi_term::Colour::{Green, Red,Blue};
-use crossterm::{cursor, QueueableCommand};
 use exitfailure::ExitFailure;
 use failure::ResultExt;
 use std::io::{stdout, Write};
 use std::process::exit;
 use structopt::StructOpt;
 use text_io::read;
+use crossterm::{cursor,execute};
 
 #[derive(StructOpt)]
 #[structopt(
@@ -32,13 +32,15 @@ fn main() -> Result<(), ExitFailure> {
     stdout.flush()?;
     // let mut line_index=1;
     for line in content.lines() {
-        stdout.queue(cursor::SavePosition)?;
+        // stdout.queue(cursor::SavePosition)?;
         stdout.write(format!("{} {}\n", Red.bold().paint("[-]"), line).as_bytes())?;
         stdout.flush()?;
         if !check_or_throw()? {
             exit(126)
         }
-        stdout.queue(cursor::RestorePosition)?;
+        // stdout().execute(MoveTo(11,11))?.execute(RestorePosition);
+
+        execute!(stdout,cursor::MoveToPreviousLine(2))?;
         stdout.write(format!("{} {}\n", Green.paint("[X]"), line).as_bytes())?;
         stdout.flush()?;
         // line_index+=1;
